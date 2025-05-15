@@ -1,0 +1,228 @@
+.register-form {
+  width: 80%;
+  margin: 30px auto;
+  padding: 50px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background: rgba(45, 45, 45, 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 123, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  animation: fadeIn 0.5s ease-out;
+}
+
+
+@media (max-width: 768px) {
+ 
+  .register-form {
+    width: 90%;
+    max-width: 400px;
+    padding: 30px;
+  }
+  
+  .register-form form {
+    gap: 15px;
+    flex-direction: column;
+  }
+  
+  .register-form form .Inputbox {
+    width: 100%;
+  }
+  
+  .Inputbox {
+    padding: 10px 12px;
+  }
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  color: #ff7b00;
+  margin-bottom: 5px;
+  --webkit-background-clip: text;
+  --webkit-text-fill-color:transparent;
+}
+
+.app-header p {
+  color: #aaaaaa;
+  font-size: 1rem;
+  margin-top: 0;
+}
+
+.register-form h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #f0f0f0;
+}
+
+.register-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+@media (min-width: 769px) {
+ 
+  .register-form form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .register-form form .Inputbox {
+    width: 100%;
+  }
+}
+
+ .Inputbox {
+  width: 100%;
+  padding: 12px 15px 12px 40px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+  background-color: #2d2d2d;
+  color: #f0f0f0;
+  box-sizing: border-box;
+}
+.provider-in{
+  margin: 5px 0px 15px 0px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance:none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.number-input-container {
+  position: relative;
+}
+
+.number-input-container::before,
+.number-input-container::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  cursor: pointer;
+}
+
+.number-input-container::before {
+  top: 10px;
+  border-bottom: 5px solid #ff7b00;
+}
+
+.number-input-container::after {
+  bottom: 10px;
+  border-top: 5px solid #ff7b00;
+}
+
+.number-input-container:hover::before,
+.number-input-container:hover::after {
+  opacity: 0.8;
+}
+
+.Inputbox:focus {
+  outline: none;
+  border-color: #ff7b00;
+  box-shadow: 0 0 0 2px rgba(255, 123, 0, 0.3);
+}
+
+
+textarea {
+  padding: 12px 15px;
+  border: 1px solid rgba(255, 123, 0, 0.3);
+  border-radius: 6px;
+  font-size: 16px;
+  transition: all 0.3s;
+  min-height: 100px;
+  resize: vertical;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgba(45, 45, 45, 0.8);
+  color: #f0f0f0;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #ff7b00;
+  box-shadow: 0 0 0 2px rgba(255, 123, 0, 0.3);
+}
+
+.register-form button {
+  padding: 14px;
+  background: linear-gradient(to right, #ff7b00, #ff5500);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.register-form button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(30deg);
+  transition: all 0.3s;
+}
+
+.register-form button:hover::after {
+  left: 100%;
+}
+
+.register-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.register-form button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.register-form p {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #aaaaaa;
+}
+
+.register-form a {
+  color: #ff7b00;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+.register-form a:hover {
+  text-decoration: underline;
+}
+.register-form h4{
+  margin-bottom: 20px;
+}

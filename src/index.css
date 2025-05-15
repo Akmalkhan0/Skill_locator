@@ -1,0 +1,27 @@
+*{
+:root {
+  --primary-color: #ff7b00;
+  --secondary-color: #ff5500;
+  --text-color: #f0f0f0;
+  --bg-color: #1a1a1a;
+  --card-bg: #2d2d2d;
+  --border-color: #444;
+  --shadow-color: rgba(0,0,0,0.3);
+}
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+a:hover {
+  text-decoration: none !important;
+}
+*{
+  scrollbar-color: #ff7b00 #2d2d2d;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
