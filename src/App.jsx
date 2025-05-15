@@ -4,7 +4,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 
 // Components
-import Profile from "./component/Profile";
+import Profile from "./component/profile";
 import Login from "./component/Login";
 import Register from "./component/Register";
 import Footer from "./component/Footer";
