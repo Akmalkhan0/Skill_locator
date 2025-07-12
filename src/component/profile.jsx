@@ -30,7 +30,6 @@ const Profile = () => {
             const userDoc = userSnap.data();
             console.log("User data loaded:", userDoc);
 
-            // Flatten and normalize the Firestore document into frontend state
             const flatData = {
               uid: userDoc.uid,
               fullName: userDoc.profile?.fullName || "",
@@ -46,14 +45,12 @@ const Profile = () => {
               profilePicture: userDoc.profile?.profilePicture || null,
               notifications: userDoc.preferences?.notifications || true,
 
-              // Provider specific
               services: userDoc.provider?.services || null,
               location: userDoc.provider?.location || null,
               verification: userDoc.provider?.verification || null,
               metrics: userDoc.provider?.metrics || null,
               business: userDoc.provider?.business || null,
 
-              // Seeker specific
               savedProviders: userDoc.seeker?.savedProviders || [],
               searchHistory: userDoc.seeker?.searchHistory || [],
               bookingPreferences: userDoc.seeker?.bookingPreferences || {},
@@ -82,13 +79,12 @@ const Profile = () => {
     setUploading(true);
     
     try {
-      // Upload to Cloudinary
       const formData = new FormData();
       formData.append('file', selectedFile);
       formData.append('upload_preset', 'ml_default');
       
       const response = await fetch(
-        'https://api.cloudinary.com/v1_1/akmal786/upload',
+        'Cloudinary_URL',
         {
           method: 'POST',
           body: formData
@@ -622,7 +618,7 @@ const ProfilePhotoModal = ({ isOpen, onClose, userData }) => {
       formData.append("upload_preset", "ml_default");
       
       const response = await fetch(
-        "https://api.cloudinary.com/v1_1/akmal786/upload",
+        "Cloudinay_URL",
         { method: "POST", body: formData }
       );
       
