@@ -153,7 +153,7 @@ const Register = () => {
     formData.append("upload_preset", "ml_default");
     try {
       const response = await fetch(
-        "https://api.cloudinary.com/v1_1/akmal786/upload", 
+        "CLOUDINARY_URL", 
 
         {
           method: "POST",
