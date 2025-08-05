@@ -7,12 +7,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyClwJ2_ze1TyPqfipNEaCU5oK4T6nZ3xls",
-  authDomain: "skill-locator.firebaseapp.com",
-  projectId: "skill-locator",
-  storageBucket: "skill-locator.firebasestorage.app",
-  messagingSenderId: "854094033758",
-  appId: "1:854094033758:web:2f4d5ebf0d6dfee92895cf"
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: ""
 };
 
 // Initialize Firebase
