@@ -48,7 +48,7 @@ const App = () => {
   }
 
   return (
-    <Router>
+    <BrowserRouter>
       <Header />
       <Routes>
         <Route
@@ -85,7 +85,7 @@ const App = () => {
         />
       </Routes>
       <Footer />
-      </Router>
+      </BrowserRouter>
   );
 };
 
