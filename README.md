@@ -1,12 +1,50 @@
-# React + Vite
+# Locator - Service Provider Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Locator is a web application that connects service providers with people seeking services. It allows users to create profiles, list their skills, and find service providers based on location and expertise.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- User authentication with Firebase Authentication
+- Profile management for service providers and seekers
+- Firestore database integration for storing user data
+- Cloudinary integration for photo uploads
+- Responsive design for mobile and desktop
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React.js with Vite
+- Firebase (Authentication, Firestore)
+- Cloudinary for image storage
+- CSS for styling
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js and npm installed
+- Firebase account
+- Cloudinary account
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Create a `.env` file with your Firebase and Cloudinary credentials
+4. Start the development server:
+   ```
+   npm run dev
+   ```
+
+## Firebase Configuration
+
+The application uses Firebase for authentication and Firestore for data storage. The security rules are configured to allow:
+- Read access to the `users` collection for all users
+- Write access to user documents only if the authenticated user's UID matches the document ID
+- Deny read/write access to all other collections by default
+
+## License
+
+This project is licensed under the MIT License.

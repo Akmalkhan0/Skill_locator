@@ -9,11 +9,11 @@ import Login from "./component/Login";
 import Register from "./component/Register";
 import Footer from "./component/Footer";
 import Header from "./component/Header";
-import Icon from "./component/Icon";
 import Tutorial from "./component/Tutorial";
 import ProfileViewer from "./component/ProfileViewer";
 import OfflinePage from "./component/OfflinePage";
 import Home from "./component/home";
+
 
 const App = () => {
   const [user, setUser] = useState(null);

@@ -84,6 +84,33 @@ const ProfileViewer = () => {
           <div>
             <h2>{userData.fullName || "User"}</h2>
             <p className="role-badge1">{userData.role === "provider" ? 'Service Provider' : 'Service Seeker'}</p>
+            {userData.role === "provider" && (
+              <button 
+                className="request-chat-btn"
+                onClick={() => {
+                  const createChatRequest = async () => {
+                    try {
+                      const requestRef = collection(db, "chatRequests");
+                      await addDoc(requestRef, {
+                        senderId: auth.currentUser.uid,
+                        senderName: auth.currentUser.displayName || "Anonymous",
+                        receiverId: id,
+                        receiverName: userData.fullName,
+                        status: "pending",
+                        createdAt: serverTimestamp()
+                      });
+                      alert("Chat request sent successfully!");
+                    } catch (error) {
+                      console.error("Error sending chat request:", error);
+                      alert("Failed to send chat request. Please try again.");
+                    }
+                  };
+                  createChatRequest();
+                }}
+              >
+                Request Chat
+              </button>
+            )}
           </div>
         </div>
       </header>

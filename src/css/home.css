@@ -23,7 +23,6 @@
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto;
-  max-width: 1200px;
   padding: 20px;
 }
 
@@ -61,6 +60,7 @@
 
 .user-card {
   background: linear-gradient(145deg, #2d2d2d, #252525);
+
   border-radius: 16px;
   padding: 30px;
   margin: 15px;
@@ -72,12 +72,14 @@
   flex-direction: column;
   position: relative;
   overflow: hidden;
+
   border: 1px solid rgba(255, 123, 0, 0.1);
 }
 
 .user-card::after {
   content: '';
   position: absolute;
+  
   top: 0;
   left: 0;
   right: 0;
@@ -125,6 +127,8 @@
 @media (max-width: 768px) {
   .user-card {
     width: calc(50% - 30px);
+  max-width: 500px;
+
     padding: 20px;
   }
   
@@ -144,6 +148,7 @@
 @media (max-width: 550px) {
   .user-card {
     width: calc(100% - 20px);
+  max-width: 500px;
     padding: 15px;
     margin: 10px;
     display: block;

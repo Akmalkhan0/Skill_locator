@@ -81,7 +81,7 @@ const Home = () => {
       ) : (
         <div className="cards-container">
           {filteredProviders.map(provider => (
-            <div key={provider.id} className="user-card">
+            <div key={provider.id} className="user-card" style={{width:'80vw'}}>
               <div className="user-card-header">
                 {provider.profile?.profilePicture && (
                   <img
