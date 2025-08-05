@@ -153,7 +153,8 @@ const Register = () => {
     formData.append("upload_preset", "ml_default");
     try {
       const response = await fetch(
-        "Fetch_URL,
+        "Fetch_URL", 
+
         {
           method: "POST",
           body: formData
