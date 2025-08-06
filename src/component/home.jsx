@@ -89,7 +89,7 @@ const Home = () => {
               </div>
               <div className="category-container">
                 <div className='category-label'>Category:</div>
-              <div className="skeleton skeleton-box category-value"></div>
+              <div className="skeleton skeleton-button category-value"></div>
               </div>
               <div className="skeleton skeleton-button" style={{width:'150px'}}></div>
             </div>))}
