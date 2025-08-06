@@ -799,10 +799,12 @@ width: 120px;
 .skeleton-circle-sm{
  background-color: #aaa;
  border-radius: 25%;
- height: 28px;
- width: 25px;
+ height: 24px;
+ width: 20px;
  animation: pulse 1.5s infinite ease-in-out;
  align-items: center;
+ margin-top:13px;
+ margin-left:-10px;
 }
 .skeleton-circle-sm-2{
  background-color: #aaa;
