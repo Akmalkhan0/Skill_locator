@@ -130,68 +130,112 @@ export const Profile = () => {
 
   if (loading) {
     return (
-      <div className="profile-container">
-        <header className="profile-header">
-          <div className="profile-info">
-            <div className="profile-pic1 skeleton skeleton-circle">
+      <>
+        <div className="profile-container">
+          <header className="profile-header">
+            <div className="profile-info">
+              <div className="profile-pic1 skeleton skeleton-circle">
+              </div>
+              <div className="text-skeletons">
+                <div className="skeleton skeleton-text"></div>
+                <div className="skeleton skeleton-capsule"></div>
+                <div className="skeleton skeleton-button"></div>
+              </div>
             </div>
-            <div className="text-skeletons">
-              <div className="skeleton skeleton-text"></div>
-              <div className="skeleton skeleton-capsule"></div>
-              <div className="skeleton skeleton-button"></div>
-            </div>
-          </div>
-          <div className="skeleton skeleton-button"></div>
-        </header>
-
-        <div className="profile-sections">
-          <section className="profile-section personal-info">
-            <div className="section-header">
-              <div className="skeleton skeleton-text skeleton-text"></div>
-              <div className="skeleton skeleton-button"></div>
-            </div>
-            <div className="info-grid">
-              {Array(4).fill(0).map((_, i) => (
-                <div className="info-item" key={i}>
-                  <div className="skeleton skeleton-line short"></div>
-                  <div className="skeleton skeleton-line medium"></div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="profile-section dashboard-placeholder">
-            <div className="skeleton skeleton-line medium"></div>
-            <div className="skeleton skeleton-subtext"></div>
-            <div className="skeleton skeleton-line medium"></div>
             <div className="skeleton skeleton-button"></div>
-            <div className="skeleton skeleton-capsule" style={{display: 'inline-block', margin:'10px 0 10px 10px'}}></div>
-            <div className="skeleton skeleton-circle-sm" style={{display: 'inline-block', marginBottom:'10px'}}></div>
-            <div className="skeleton skeleton-capsule" style={{display: 'inline-block', margin:'10px 0 10px 10px'}}></div>
-            <div className="skeleton skeleton-circle-sm" style={{display: 'inline-block', marginBottom:'10px'}}></div>
-            <div className="skeleton skeleton-capsule" style={{display: 'inline-block', margin:'10px 0 10px 10px'}}></div>
-            <div className="skeleton skeleton-circle-sm" style={{display: 'inline-block', marginBottom:'10px'}}></div>
-            <div className="skeleton skeleton-capsule" style={{display: 'inline-block', margin:'10px 0 10px 10px'}}></div>
-            <div className="skeleton skeleton-circle-sm" style={{display: 'inline-block', marginBottom:'10px'}}></div>
-            <div className="skeleton skeleton-capsule" style={{display: 'inline-block', margin:'10px 0 10px 10px'}}></div>
-            <div className="skeleton skeleton-circle-sm" style={{display: 'inline-block', marginBottom:'10px'}}></div>
-            <div className="skeleton skeleton-capsule" style={{display: 'inline-block', margin:'10px 0 10px 10px'}}></div>
-            <div className="skeleton skeleton-circle-sm" style={{display: 'inline-block', marginBottom:'10px'}}></div>
-            <div className="skeleton skeleton-capsule" style={{display: 'inline-block', margin:'10px 0 10px 10px'}}></div>
-            <div className="skeleton skeleton-circle-sm" style={{display: 'inline-block', marginBottom:'10px'}}></div>
-            <div className="skeleton skeleton-capsule" style={{display: 'inline-block', margin:'10px 0 10px 10px'}}></div>
-            <div className="skeleton skeleton-circle-sm" style={{display: 'inline-block', marginBottom:'10px'}}></div>
-            <div className="skeleton skeleton-capsule" style={{display: 'inline-block', margin:'10px 0 10px 10px'}}></div>
-            <div className="skeleton skeleton-circle-sm" style={{display: 'inline-block', marginBottom:'10px'}}></div>
-            <div className="skeleton skeleton-line short"></div>
-            <div className="skeleton skeleton-line medium"></div>
-            <div className="skeleton skeleton-line short"></div>
-            <div className="skeleton skeleton-line medium"></div>
-            <div className="skeleton skeleton-line short"></div>
-            <div className="skeleton skeleton-line medium"></div>
-          </section>
+          </header>
+
+          <div className="profile-sections">
+            <section className="profile-section personal-info">
+              <div className="section-header">
+                <h3 >Presonal Inforamation</h3>
+                <div className="skeleton skeleton-button"></div>
+              </div>
+              <div className="info-grid">
+                {["Email:", "Phone:", "Address:", "Bio:"].map((label, i) => (
+                  <div className="info-item" key={i}>
+                    <span className="info-label">{label}</span>
+                    {i == 3 ? (
+                      <>
+                        <span className="info-value skeleton skeleton-text"></span>
+                        <span className="info-value skeleton skeleton-text"></span>
+                        <span className="info-value skeleton skeleton-text"></span>
+                      </>
+                    ) : (
+                      <span className="info-value skeleton skeleton-text"></span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+            <section className="profile-section provider-details">
+              <h3>Service Details</h3>
+              <div className="info-grid">
+
+                {/* Category */}
+                <div className="info-item">
+                  <span className="info-label">Category</span>
+                  <span className="info-value skeleton skeleton-text"></span>
+                </div>
+
+                {/* Skills */}
+                <div className="info-item">
+                  <div className="skills-header">
+                    <span className="info-label">Skills</span>
+                  </div>
+                  <div className="skeleton skeleton-button"></div>
+                  <div className="skills-container">
+                    {Array(9).fill(0).map((_, index) => (
+                      <>
+                        <div className="skeleton skeleton-capsule" style={{ display: 'inline-block', margin: '10px 0 10px 10px' }}></div>
+                        <div className="skeleton skeleton-circle-sm" style={{ display: 'inline-block' }}></div>
+                      </>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Hourly Rate */}
+                <div className="info-item">
+                  <span className="info-label ">Hourly Rate</span>
+                  <span className="info-value skeleton skeleton-text"></span>
+                </div>
+
+                {/* Availability */}
+                <div className="info-item">
+                  <span className="info-label ">Availability</span>
+                  <span className="info-value skeleton skeleton-text"></span>
+                </div>
+
+                {/* Experience */}
+                <div className="info-item">
+                  <span className="info-label">Experience</span>
+                  <span className="info-value skeleton skeleton-text"></span>
+                </div>
+
+                {/* Location */}
+                <div className="info-item">
+                  <span className="info-label">Location</span>
+                  <span className="info-value skeleton skeleton-text"></span>
+                </div>
+              </div>
+
+              {/* Certifications */}
+
+              <span className="info-label">Location</span>
+              <div className="certificates-grid1" style={{ display: 'inline-block' }}>
+                {Array(4).fill(0).map((_, index) => (
+                  <div key={index} className="certificate-item1" style={{ display: 'inline-block', margin: '5px' }}>
+                    <span className="certificate-thumbnail1 skeleton skeleton-image" style={{ display: 'inline-block', width: '150px', height: '120px' }}></span>
+
+                    <p className="skeleton skeleton-line medium"></p>
+                    <p className="skeleton skeleton-line short"></p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
