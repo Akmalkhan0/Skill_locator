@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
+import './App.css'
+
 
 // Components
 import Profile from "./component/profile";
@@ -23,15 +25,17 @@ const App = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setCheckingAuth(false);
+      setTimeout(() => {
+        setCheckingAuth(false);
+      }, 500);
     });
 
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
-    
+
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
-    
+
     return () => {
       unsubscribe();
       window.removeEventListener('online', handleOnline);
@@ -40,7 +44,15 @@ const App = () => {
   }, []);
 
   if (checkingAuth) {
-    return <h3>Checking authentication...</h3>; // or a spinner
+    return (<>
+      <div className="loading-container">
+          <img src="/Loading.png" alt="Loading..." className="loading-spinner-img" />
+        <div style={{display:'flex',alignItems:'flex-end',flexDirection:'row',margin: '10px'}}>
+        <img src="/favicon.png" alt="Loading..." width={'50px'}  />
+        <h1>Skill Locator</h1>
+        </div>
+      </div>
+    </>);
   }
 
   if (!isOnline) {
@@ -65,11 +77,11 @@ const App = () => {
         />
         <Route
           path="/login"
-          element={<Login /> }
+          element={<Login />}
         />
         <Route
           path="/register"
-          element={<Register /> }
+          element={<Register />}
         />
         <Route
           path="/tutorials"
@@ -85,7 +97,7 @@ const App = () => {
         />
       </Routes>
       <Footer />
-      </Router>
+    </Router>
   );
 };
 

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/header.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { auth } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -10,7 +9,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [user, setUser] = useState(null);
-
+  const [loading, setLoading] = useState(true);
 
 
   useEffect(() => {
@@ -31,8 +30,11 @@ export default function Header() {
       if (authUser) {
         const userDoc = await getDoc(doc(db, 'users', authUser.uid));
         setUser({ ...authUser, profile: userDoc.data()?.profile });
+        setLoading(true);
+
       } else {
         setUser(null);
+        setLoading(false);
       }
     });
     return () => unsubscribe();
@@ -42,6 +44,7 @@ export default function Header() {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
 
   return (
     <header className="header-container">
@@ -71,10 +74,15 @@ export default function Header() {
                 ) : 'Profile'}
               </Link>
             ) : (
-              <>
-              <Link to="/register" className="auth-btn register-btn">Register</Link>
-              </>
-            )}
+              loading ? (
+                <>  
+                 <div className='skeleton skeleton-circle-sm-2'></div>
+                </>
+              ) : (
+                <>
+                  <Link to="/register" className="auth-btn register-btn">Register</Link>
+                </>
+              ))}
           </nav>
         )}
       </div>
@@ -84,9 +92,9 @@ export default function Header() {
           {user ? (
             <Link to="/profile" className="mobile-link" onClick={toggleMenu}>
               {user.profile?.profilePicture ? (
-                < div style={{display:'flex',alignItems:'center',}}>
-                <img src={user.profile.profilePicture} alt="Profile" className="mobile-profile-pic" style={{scale:'1.5',marginLeft:'20px'}} />
-                <p style={{marginLeft:'10px',textTransform:'capitalize',fontSize:'18px'}}>{user.profile.fullName}</p>
+                < div style={{ display: 'flex', alignItems: 'center', }}>
+                  <img src={user.profile.profilePicture} alt="Profile" className="mobile-profile-pic" style={{ scale: '1.5', marginLeft: '20px' }} />
+                  <p style={{ marginLeft: '10px', textTransform: 'capitalize', fontSize: '18px' }}>{user.profile.fullName}</p>
                 </div>
               ) : 'Profile'}
             </Link>

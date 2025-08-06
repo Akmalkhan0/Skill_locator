@@ -8,7 +8,7 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
 
-const Profile = () => {
+export const Profile = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showPhotoEdit, setShowPhotoEdit] = useState(false);
@@ -75,40 +75,40 @@ const Profile = () => {
 
   const handlePhotoUpload = async () => {
     if (!selectedFile) return;
-    
+
     setUploading(true);
-    
+
     try {
       const formData = new FormData();
       formData.append('file', selectedFile);
       formData.append('upload_preset', 'ml_default');
-      
+
       const response = await fetch(
-        'Cloudinary_URL',
+        'https://api.cloudinary.com/v1_1/akmal786/upload',
         {
           method: 'POST',
           body: formData
         }
       );
-      
+
       const data = await response.json();
       if (!data.secure_url) throw new Error('Upload failed');
-      
+
       // Update Firestore
       const userRef = doc(db, 'users', auth.currentUser.uid);
       await updateDoc(userRef, {
         'profile.profilePicture': data.secure_url
       });
-      
+
       // Update local state
       setUserData(prev => ({
         ...prev,
         profilePicture: data.secure_url
       }));
-      
+
       setShowPhotoEdit(false);
       setSelectedFile(null);
-      
+
       // Force refresh of profile picture in header
       window.location.reload();
     } catch (error) {
@@ -118,7 +118,7 @@ const Profile = () => {
       setUploading(false);
     }
   };
-  
+
   const handleLogout = async () => {
     try {
       await signOut(auth);
@@ -130,10 +130,112 @@ const Profile = () => {
 
   if (loading) {
     return (
-      <div className="loading-container">
-        <p>Loading dashboard...</p>
-        <div className="loading-spinner"></div>
-      </div>
+      <>
+        <div className="profile-container">
+          <header className="profile-header">
+            <div className="profile-info">
+              <div className="profile-pic1 skeleton skeleton-circle">
+              </div>
+              <div className="text-skeletons">
+                <div className="skeleton skeleton-text"></div>
+                <div className="skeleton skeleton-capsule"></div>
+                <div className="skeleton skeleton-button"></div>
+              </div>
+            </div>
+            <div className="skeleton skeleton-button"></div>
+          </header>
+
+          <div className="profile-sections">
+            <section className="profile-section personal-info">
+              <div className="section-header">
+                <h3 >Presonal Inforamation</h3>
+                <div className="skeleton skeleton-button"></div>
+              </div>
+              <div className="info-grid">
+                {["Email:", "Phone:", "Address:", "Bio:"].map((label, i) => (
+                  <div className="info-item" key={i}>
+                    <span className="info-label">{label}</span>
+                    {i == 3 ? (
+                      <>
+                        <span className="info-value skeleton skeleton-text"></span>
+                        <span className="info-value skeleton skeleton-text"></span>
+                        <span className="info-value skeleton skeleton-text"></span>
+                      </>
+                    ) : (
+                      <span className="info-value skeleton skeleton-text"></span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+            <section className="profile-section provider-details">
+              <h3>Service Details</h3>
+              <div className="info-grid">
+
+                {/* Category */}
+                <div className="info-item">
+                  <span className="info-label">Category</span>
+                  <span className="info-value skeleton skeleton-text"></span>
+                </div>
+
+                {/* Skills */}
+                <div className="info-item">
+                  <div className="skills-header">
+                    <span className="info-label">Skills</span>
+                  </div>
+                  <div className="skeleton skeleton-button"></div>
+                  <div className="skills-container">
+                    {Array(9).fill(0).map((_, index) => (
+                      <>
+                        <div className="skeleton skeleton-capsule" style={{ display: 'inline-block', margin: '10px 0 10px 10px' }}></div>
+                        <div className="skeleton skeleton-circle-sm" style={{ display: 'inline-block' }}></div>
+                      </>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Hourly Rate */}
+                <div className="info-item">
+                  <span className="info-label ">Hourly Rate</span>
+                  <span className="info-value skeleton skeleton-text"></span>
+                </div>
+
+                {/* Availability */}
+                <div className="info-item">
+                  <span className="info-label ">Availability</span>
+                  <span className="info-value skeleton skeleton-text"></span>
+                </div>
+
+                {/* Experience */}
+                <div className="info-item">
+                  <span className="info-label">Experience</span>
+                  <span className="info-value skeleton skeleton-text"></span>
+                </div>
+
+                {/* Location */}
+                <div className="info-item">
+                  <span className="info-label">Location</span>
+                  <span className="info-value skeleton skeleton-text"></span>
+                </div>
+              </div>
+
+              {/* Certifications */}
+
+              <span className="info-label">Location</span>
+              <div className="certificates-grid1" style={{ display: 'inline-block' }}>
+                {Array(4).fill(0).map((_, index) => (
+                  <div key={index} className="certificate-item1" style={{ display: 'inline-block', margin: '5px' }}>
+                    <span className="certificate-thumbnail1 skeleton skeleton-image" style={{ display: 'inline-block', width: '150px', height: '120px' }}></span>
+
+                    <p className="skeleton skeleton-line medium"></p>
+                    <p className="skeleton skeleton-line short"></p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+        </div>
+      </>
     );
   }
 
@@ -147,19 +249,19 @@ const Profile = () => {
           <li>Our servers are temporarily unavailable</li>
           <li>Your profile data hasn't been properly initialized</li>
         </ul>
-        
+
         <div className="error-actions">
           <button onClick={() => window.location.reload()} className="reload-button">
             <i className="refresh-icon"></i> Try Again
           </button>
-          <button 
-            onClick={handleLogout} 
+          <button
+            onClick={handleLogout}
             className="logout-button"
           >
             <i className="logout-icon"></i> Logout & Try Again
           </button>
         </div>
-        
+
         <p className="error-help-text">
           If the problem continues, please contact support at support@skilllocator.com
         </p>
@@ -178,13 +280,13 @@ const Profile = () => {
                 alt="Profile"
                 className="profiles-pic"
               />
-              <button 
+              <button
                 className="edit-profile-pic-btn"
                 onClick={() => setShowPhotoEdit(true)}
               >
                 Edit
               </button>
-              
+
               <Modal
                 isOpen={showPhotoEdit}
                 onRequestClose={() => setShowPhotoEdit(false)}
@@ -193,7 +295,7 @@ const Profile = () => {
               >
                 <div className="modal-content">
                   <h3>Update Profile Picture</h3>
-                  
+
                   {!selectedFile ? (
                     <div className="file-selection-container">
                       <p className="file-selection-text">Select a new profile photo:</p>
@@ -215,9 +317,9 @@ const Profile = () => {
                   ) : (
                     <div className="preview-section">
                       <div className="preview-container">
-                        <img 
-                          src={URL.createObjectURL(selectedFile)} 
-                          alt="Preview" 
+                        <img
+                          src={URL.createObjectURL(selectedFile)}
+                          alt="Preview"
                           className="preview-image"
                         />
                       </div>
@@ -225,13 +327,13 @@ const Profile = () => {
                         <p>Do you want to use this photo as your profile picture?</p>
                       </div>
                       <div className="modal-actions">
-                        <button 
+                        <button
                           onClick={() => setSelectedFile(null)}
                           className="back-btn"
                         >
                           Choose Different Photo
                         </button>
-                        <button 
+                        <button
                           onClick={handlePhotoUpload}
                           disabled={uploading}
                           className="upload-btn"
@@ -241,10 +343,10 @@ const Profile = () => {
                       </div>
                     </div>
                   )}
-                  
+
                   {!selectedFile && (
                     <div className="modal-actions">
-                      <button 
+                      <button
                         onClick={() => setShowPhotoEdit(false)}
                         className="cancel-btn"
                       >
@@ -270,7 +372,7 @@ const Profile = () => {
         <section className="profile-section personal-info">
           <div className="section-header">
             <h3>Personal Information</h3>
-            <button 
+            <button
               className="edit-btn"
               onClick={() => setShowPersonalInfoEdit(true)}
             >
@@ -295,7 +397,7 @@ const Profile = () => {
               <span className="info-value">{userData.bio || "No bio available"}</span>
             </div>
           </div>
-          
+
           <PersonalInfoModal
             isOpen={showPersonalInfoEdit}
             onClose={() => setShowPersonalInfoEdit(false)}
@@ -316,7 +418,7 @@ const Profile = () => {
 // 💼 Provider Dashboard
 const ProviderDashboard = ({ user }) => {
   const [showSkillModal, setShowSkillModal] = useState(false);
-  
+
   const handleRemoveSkill = async (index) => {
     try {
       const userRef = doc(db, "users", user.uid);
@@ -330,7 +432,7 @@ const ProviderDashboard = ({ user }) => {
       console.error("Error removing skill:", error);
     }
   };
-  
+
   return (
     <section className="profile-section provider-details">
       <h3>Service Details</h3>
@@ -342,7 +444,7 @@ const ProviderDashboard = ({ user }) => {
         <div className="info-item">
           <div className="skills-header">
             <span className="info-label">Skills:</span>
-            <button 
+            <button
               className="add-skill-btn"
               onClick={() => setShowSkillModal(true)}
             >
@@ -353,7 +455,7 @@ const ProviderDashboard = ({ user }) => {
             {user.services?.skills?.map((skill, index) => (
               <div key={index} className="skill-item">
                 <span className="skill-capsule">{skill.trim()}</span>
-                <button 
+                <button
                   className="remove-skill-btn"
                   onClick={() => handleRemoveSkill(index)}
                 >
@@ -363,8 +465,8 @@ const ProviderDashboard = ({ user }) => {
             )) || "Not listed"}
           </div>
         </div>
-        
-        <SkillModal 
+
+        <SkillModal
           isOpen={showSkillModal}
           onClose={() => setShowSkillModal(false)}
           userData={user}
@@ -417,20 +519,20 @@ const SeekerDashboard = ({ user }) => {
     <section className="profile-section seeker-actions">
       <h3>Quick Actions</h3>
       <div className="action-buttons">
-        <Link 
+        <Link
           className="primary-action"
           to="/Home"
         >
           Find Service Providers
         </Link>
-        <button 
+        <button
           className="secondary-action"
           onClick={() => alert("Saved providers coming soon!")}
         >
           View Saved Providers
         </button>
       </div>
-      
+
       <div className="preferences-section">
         <h4>Your Preferences</h4>
         <div className="info-grid">
@@ -541,7 +643,7 @@ const SkillModal = ({ isOpen, onClose, userData }) => {
 
   const handleAddSkill = async () => {
     if (!newSkill.trim()) return;
-    
+
     try {
       const userRef = doc(db, "users", userData.uid);
       const updatedSkills = [...(userData.services?.skills || []), newSkill.trim()];
@@ -611,17 +713,17 @@ const ProfilePhotoModal = ({ isOpen, onClose, userData }) => {
 
   const handleUpload = async () => {
     if (!selectedFile) return;
-    
+
     try {
       const formData = new FormData();
       formData.append("file", selectedFile);
       formData.append("upload_preset", "ml_default");
-      
+
       const response = await fetch(
         "Cloudinay_URL",
         { method: "POST", body: formData }
       );
-      
+
       const data = await response.json();
       if (data.secure_url) {
         const userRef = doc(db, "users", userData.uid);
@@ -647,9 +749,9 @@ const ProfilePhotoModal = ({ isOpen, onClose, userData }) => {
         <input type="file" onChange={handleFileChange} accept="image/*" />
         {selectedFile && (
           <div className="preview">
-            <img 
-              src={URL.createObjectURL(selectedFile)} 
-              alt="Preview" 
+            <img
+              src={URL.createObjectURL(selectedFile)}
+              alt="Preview"
               className="preview-img"
             />
           </div>
