@@ -63,9 +63,36 @@ const Home = () => {
       </div>
 
       {loading ? (
-        <div className="loading-container">
-          <div className="loading-spinner"></div>
-          <p>Loading providers...</p>
+        <div className="cards-container">
+          {Array.from({ length: 6 }).map((_, index) => (
+            <div key={index} className="user-card skeleton-card" style={{ width: '80vw' }}>
+              <div className="user-card-header">
+                <div className="skeleton skeleton-circle"></div>
+                <div className="skeleton skeleton-line medium"></div>
+              </div>
+              <div className="skeleton rating-container">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="skeleton-star star filled">
+                    ★
+                  </span>
+                ))}
+                <span className="skeleton-star rating-text">(5.0)</span>
+              </div>
+              <div className="skills-container1">
+                <span className="skill-capsule1 skeleton skeleton-capsule"></span>
+                <span className="skill-capsule1 skeleton skeleton-capsule"></span>
+                <span className="skill-capsule1 skeleton skeleton-capsule"></span>
+                <span className="skill-capsule1 skeleton skeleton-capsule"></span>
+                <span className="skill-capsule1 skeleton skeleton-capsule"></span>
+                <span className="skill-capsule1 skeleton skeleton-capsule"></span>
+                <span className="skill-capsule1 skeleton skeleton-capsule"></span>
+              </div>
+              <div className="category-container">
+                <div className='category-label'>Category:</div>
+              <div className="skeleton skeleton-box category-value"></div>
+              </div>
+              <div className="skeleton skeleton-button" style={{width:'150px'}}></div>
+            </div>))}
         </div>
       ) : error ? (
         <div className="error-container">
@@ -81,7 +108,7 @@ const Home = () => {
       ) : (
         <div className="cards-container">
           {filteredProviders.map(provider => (
-            <div key={provider.id} className="user-card" style={{width:'80vw'}}>
+            <div key={provider.id} className="user-card" style={{ width: '80vw' }}>
               <div className="user-card-header">
                 {provider.profile?.profilePicture && (
                   <img
