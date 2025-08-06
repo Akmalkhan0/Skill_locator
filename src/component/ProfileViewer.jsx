@@ -67,21 +67,25 @@ const ProfileViewer = () => {
         <section className="profile-section1 personal-info1">
           <h3>Personal Information</h3>
           <div className="info-grid1">
-            <div className="info-item1">
+            <div className="info-item1" style={{height:'140px'}}>
               <span className="info-label1">Email:</span>
-              <span className="skeleton skeleton-box"></span>
+              <span className="skeleton skeleton-text"></span>
             </div>
-            <div className="info-item1">
+            <div className="info-item1" style={{height:'140px'}}>
               <span className="info-label1">Phone:</span>
-              <span className="info-value1 skeleton skeleton-box"></span>
+              <span className="skeleton skeleton-text"></span>
             </div>
-            <div className="info-item1">
+            <div className="info-item1" style={{height:'140px'}}>
               <span className="info-label1">Address:</span>
-              <span className="info-value1 skeleton skeleton-box"></span>
+              <span className="info-value1 skeleton skeleton-line"></span>
+              <span className="info-value1 skeleton skeleton-line short"></span>
             </div>
             <div className="info-item1">
               <span className="info-label1">Bio:</span>
-              <span className="info-value1 skeleton skeleton-box"></span>
+              <span className="info-value1 skeleton skeleton-line"></span>
+              <span className="info-value1 skeleton skeleton-line"></span>
+              <span className="info-value1 skeleton skeleton-line"></span>
+              <span className="info-value1 skeleton skeleton-line medium"></span>
             </div>
           </div>
         </section>
@@ -91,19 +95,23 @@ const ProfileViewer = () => {
           <div className="info-grid1">
             <div className="info-item1">
               <span className="info-label1">Category:</span>
-              <span className="info-value1 skeleton skeleton-box"></span>
+              <span className="info-value1 skeleton skeleton-line"></span>
             </div>
             <div className="info-item1">
               <span className="info-label1">Skills:</span>
               <div className="skills-container1">
-                <span className="skill-capsule1 skeleton skeleton-pill"></span>
-                <span className="skill-capsule1 skeleton skeleton-pill"></span>
-                <span className="skill-capsule1 skeleton skeleton-pill"></span>
+                <span className="skill-capsule1 skeleton skeleton-capsule"></span>
+                <span className="skill-capsule1 skeleton skeleton-capsule"></span>
+                <span className="skill-capsule1 skeleton skeleton-capsule"></span>
+                <span className="skill-capsule1 skeleton skeleton-capsule"></span>
+                <span className="skill-capsule1 skeleton skeleton-capsule"></span>
+                <span className="skill-capsule1 skeleton skeleton-capsule"></span>
+                <span className="skill-capsule1 skeleton skeleton-capsule"></span>
               </div>
             </div>
             <div className="info-item1">
               <span className="info-label1">Rating:</span>
-              <span className="info-value1 skeleton skeleton-text short"></span>
+              <span className="info-value1 skeleton skeleton-line short"></span>
             </div>
           </div>
         </section>
