@@ -12,7 +12,6 @@ const Home = () => {
   const [filteredProviders, setFilteredProviders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  console.log(await getDocs(collection(db, 'users')).docs);
   useEffect(() => {
     const fetchProviders = async () => {
       try {
@@ -25,6 +24,7 @@ const Home = () => {
             ...doc.data()
           }))
           .filter(user => user.profile.role === 'provider');
+          console.log(providersData);
         setProviders(providersData);
         setFilteredProviders(providersData);
       } catch (err) {
