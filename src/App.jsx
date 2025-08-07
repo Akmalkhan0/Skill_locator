@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
@@ -24,26 +24,48 @@ const App = () => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setTimeout(() => {
-        setCheckingAuth(false);
-      }, 500);
-    });
-
-    const handleOnline = () => setIsOnline(true);
+    const handleOnline = () => {
+      setIsOnline(true);
+      // When coming back online, check auth and refresh
+      window.location.reload();
+    };
+    
     const handleOffline = () => setIsOnline(false);
 
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
 
+    // Initial check
+    setIsOnline(navigator.onLine);
+
+    // Handle auth only when online
+    if (navigator.onLine) {
+      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+        setTimeout(() => {
+          setCheckingAuth(false);
+        }, 200);
+      });
+
+      return () => {
+        unsubscribe();
+        window.removeEventListener('online', handleOnline);
+        window.removeEventListener('offline', handleOffline);
+      };
+    }
+
     return () => {
-      unsubscribe();
       window.removeEventListener('online', handleOnline);
       window.removeEventListener('offline', handleOffline);
     };
   }, []);
 
+  // Highest priority: Offline page
+  if (!isOnline) {
+    return <OfflinePage />
+  }
+
+  // Second priority: Auth loading (only when online)
   if (checkingAuth) {
     return (<>
       <div className="loading-container">
@@ -57,8 +79,9 @@ const App = () => {
   }
 
   if (!isOnline) {
-    return <OfflinePage />;
+    return <OfflinePage />
   }
+
 
   return (
     <Router>
@@ -71,6 +94,30 @@ const App = () => {
         <Route
           path="/"
           element={<Home />}
+        />
+        <Route
+          path="/Skills"
+          element={<div></div>}
+        />
+        <Route
+          path="/jobs"
+          element={<div></div>}
+        />
+        <Route
+          path="/contact"
+          element={<div></div>}
+        />
+          <Route
+          path="/faq"
+          element={<div></div>}
+        />
+        <Route
+          path="/privacy"
+          element={<div></div>}
+        />
+        <Route
+          path="/terms"
+          element={<div></div>}
         />
         <Route
           path="/home"

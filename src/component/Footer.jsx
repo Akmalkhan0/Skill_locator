@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../css/footer.css';
 import '../css/register.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const Footer = () => {
   return (
@@ -37,8 +38,8 @@ const Footer = () => {
         
         <div className="footer-section">
           <h4>Contact Us</h4>
-          <p>Email: <p>Akmalkhann0@gmail.com</p> <p> Musahidmansuri555@gmail.com</p></p>
-          <p>Phone: <p>+91 626XXXXX52</p><p>+91 798XXXXX79</p> </p>
+          <p>Email: Akmalkhann0@gmail.com, Musahidmansuri555@gmail.com</p>
+          <p>Phone: +91 626XXXXX52, +91 798XXXXX79</p>
         </div>
         
         <div className="footer-section">
@@ -55,7 +56,7 @@ const Footer = () => {
         <div className="footer-section">
           <h4>Newsletter</h4>
           <form className="newsletter-form">
-            <FontAwesomeIcon icon="envelope" className="icon"  style={{color:'#ff5500', position:'absolute', top:'15%',left:'5%',zIndex:'5'}}/>
+            <FontAwesomeIcon icon={faEnvelope} className="icon"  style={{color:'#ff5500', position:'absolute', top:'15%',left:'5%',zIndex:'5'}}/>
             <input type="email" placeholder="Your email address" required className='Inputbox'/>
             <button type="submit" >Subscribe</button>
           </form>
