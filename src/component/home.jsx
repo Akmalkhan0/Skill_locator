@@ -19,22 +19,11 @@ const Home = () => {
         setError(null);
         const querySnapshot = await getDocs(collection(db, 'users'));
         const providersData = querySnapshot.docs
-<<<<<<< HEAD
         .map(doc => ({
           id: doc.id,
           ...doc.data(),
         }))
         .filter(user => user?.profile?.role === 'provider');
-        console.log(providersData);
-=======
-          .map(doc => ({
-            id: doc.id,
-            ...doc.data()
-          })).filter(user => user?.profile?.role === 'provider');
-<<<<<<< HEAD
->>>>>>> 47427792378e87047cfdf208b791dd411e957e13
-=======
->>>>>>> 47427792378e87047cfdf208b791dd411e957e13
         setProviders(providersData);
         setFilteredProviders(providersData);
       } catch (err) {

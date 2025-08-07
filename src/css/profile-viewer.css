@@ -224,17 +224,11 @@
 .skeleton-line.medium {
   width: 60%;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 .skeleton-star{
     animation: pulse 1.5s infinite ease-in-out;
 }
-=======
 
->>>>>>> 47427792378e87047cfdf208b791dd411e957e13
-=======
-
->>>>>>> 47427792378e87047cfdf208b791dd411e957e13
 @keyframes pulse {
   0%, 100% {
     opacity: 1;
@@ -242,12 +236,4 @@
   50% {
     opacity: 0.4;
   }
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 47427792378e87047cfdf208b791dd411e957e13
-=======
-}
->>>>>>> 47427792378e87047cfdf208b791dd411e957e13
