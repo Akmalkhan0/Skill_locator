@@ -23,7 +23,6 @@ const Home = () => {
             id: doc.id,
             ...doc.data()
           }))
-          .filter(user => user.profile.role === 'provider');
         setProviders(providersData);
         setFilteredProviders(providersData);
       } catch (err) {
