@@ -12,7 +12,7 @@ const Home = () => {
   const [filteredProviders, setFilteredProviders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  console.log(db);
   useEffect(() => {
     const fetchProviders = async () => {
       try {
