@@ -46,7 +46,7 @@ const App = () => {
   if (checkingAuth) {
     return (<>
       <div className="loading-container">
-          <img src="/Loading.png" alt="Loading..." className="loading-spinner-img" />
+          <img src="/loading.png" alt="Loading..." className="loading-spinner-img" />
         <div style={{display:'flex',alignItems:'flex-end',flexDirection:'row',margin: '10px'}}>
         <img src="/favicon.png" alt="Loading..." width={'50px'}  />
         <h1>Skill Locator</h1>
