@@ -14,6 +14,7 @@ import Header from "./component/Header";
 import Tutorial from "./component/Tutorial";
 import ProfileViewer from "./component/ProfileViewer";
 import OfflinePage from "./component/OfflinePage";
+import NotFound from "./component/NotFound";
 import Home from "./component/home";
 
 
@@ -94,6 +95,10 @@ const App = () => {
         <Route
           path="/offline"
           element={<OfflinePage />}
+        />
+        <Route
+          path="*"
+          element={<NotFound />}
         />
       </Routes>
       <Footer />

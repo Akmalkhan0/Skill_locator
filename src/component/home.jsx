@@ -20,11 +20,12 @@ const Home = () => {
         setError(null);
         const querySnapshot = await getDocs(collection(db, 'users'));
         const providersData = querySnapshot.docs
-          .map(doc => ({
-            id: doc.id,
-            ...doc.data()
-          }))
-          .filter(user => user.profile.role === 'provider');
+        .map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+        }))
+        .filter(user => user?.profile?.role === 'provider');
+        console.log(providersData);
         setProviders(providersData);
         setFilteredProviders(providersData);
       } catch (err) {
