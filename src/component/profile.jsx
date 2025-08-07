@@ -84,7 +84,7 @@ export const Profile = () => {
       formData.append('upload_preset', 'ml_default');
 
       const response = await fetch(
-        'Cloudinary_URL',
+        'https://api.cloudinary.com/v1_1/akmal786/upload',
         {
           method: 'POST',
           body: formData
