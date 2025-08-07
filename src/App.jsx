@@ -97,27 +97,27 @@ const App = () => {
         />
         <Route
           path="/Skills"
-          element={<div>Commint soon...</div>}
+          element={<div>Comming soon...</div>}
         />
         <Route
           path="/jobs"
-          element={<div>Commint soon...</div>}
+          element={<div>Comming soon...</div>}
         />
         <Route
           path="/contact"
-          element={<div>Commint soon...</div>}
+          element={<div>Comming soon...</div>}
         />
           <Route
           path="/faq"
-          element={<div>Commint soon...</div>}
+          element={<div>Comming soon...</div>}
         />
         <Route
           path="/privacy"
-          element={<div>Commint soon...</div>}
+          element={<div>Comming soon...</div>}
         />
         <Route
           path="/terms"
-          element={<div>Commint soon...</div>}
+          element={<div>Comming soon...</div>}
         />
         <Route
           path="/home"
