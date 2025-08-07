@@ -1,50 +1,164 @@
-# Locator - Service Provider Finder
+# Skill Locator - Service Finder
 
-Locator is a web application that connects service providers with people seeking services. It allows users to create profiles, list their skills, and find service providers based on location and expertise.
+**Skill Locator** is a modern web application that helps **service seekers** connect with **verified service providers** based on There Service or there needs or also base on the skill worrker they want means aslo have serach by skills. Built using React.js, Firebase, Firestore Realtime No Sql Databsase, Firebasse Authentication and Cloudinary, the app delivers a fast, secure, and responsive experience for users on both desktop and mobile.
 
-## Features
+## Live Demo
 
-- User authentication with Firebase Authentication
-- Profile management for service providers and seekers
-- Firestore database integration for storing user data
-- Cloudinary integration for photo uploads
-- Responsive design for mobile and desktop
+Ckeck The Latest Live Version of it and also Register If you want: 🔗[Skill Locator](https://akmskilllocator.vercel.app/)
+
+## Key Features
+
+- **Firebase Authentication**: Secure login & registration system
+- **Dynamic User Roles**: Separate flows for Seekers and Providers
+- **Profile Management**: Users can update personal details, expertise, and more
+- **Cloudinary Uploads**: Upload and store profile images and certifications
+- **Name + Skill-Based Search**: Find providers by Name, Skills, Category and service type
+- **Firestore Integration**: Real-time database for user data and metadata
+- **Fully Responsive**: Mobile-first design, optimized for all screen sizes
 
 ## Technologies Used
 
-- React.js with Vite
-- Firebase (Authentication, Firestore)
-- Cloudinary for image storage
-- CSS for styling
+| Tech Stack        | Purpose                                 |
+|------------------|------------------------------------------|
+| **React + Vite** | Frontend UI & Dev server                 |
+| **Firebase Auth**| User authentication & session handling  |
+| **Firestore DB** | Real-time NoSQL database                 |
+| **Cloudinary**   | Image upload, storage, and optimization |
+| **CSS**          | Custom styling                          |
+| **JSON**         | Static data for state/district dropdowns|
 
-## Getting Started
 
-### Prerequisites
+## 📁 Project Structure (Simplified)
 
-- Node.js and npm installed
-- Firebase account
-- Cloudinary account
+```
+📁 Skill_Locator
+├── ⚙️.firebaserc
+├── ⚙️.gitattributes
+├── ⚙️.gitignore
+├── 📄README.md
+├── 📜eslint.config.js
+├── 📋firebase.json
+├── 📋firestore.indexes.json
+├── ⚙️firestore.rules
+├── </>index.html
+├── 📋package-lock.json
+├── 📋package.json
+├── 📁public/
+│   ├── 🏞️Loading.png
+│   └── 🏞️favicon.png
+├── 📁src/
+│   ├── 📝App.css
+│   ├── ❄️App.jsx
+│   ├── 📁component/
+│   │   ├── ❄️Footer.jsx
+│   │   ├── ❄️Header.jsx
+│   │   ├── ❄️Login.jsx
+│   │   ├── ❄️OfflinePage.jsx
+│   │   ├── ❄️ProfileViewer.jsx
+│   │   ├── ❄️Register.jsx
+│   │   ├── ❄️Tutorial.jsx
+│   │   ├── ❄️home.jsx
+│   │   ├── ❄️icon.jsx
+│   │   └── ❄️profile.jsx
+│   ├── 📁css/
+│   │   ├── 📝chat.css
+│   │   ├── 📝footer.css
+│   │   ├── 📝header.css
+│   │   ├── 📝home.css
+│   │   ├── 📝login.css
+│   │   ├── 📝offline.css
+│   │   ├── 📝profile-viewer.css
+│   │   ├── 📝profile.css
+│   │   ├── 📝register.css
+│   │   └── 📝tutorial.css
+│   ├── 📁data/
+│   │   └── 📋indianStatesDistricts.json
+│   ├── ❄️firebase.jsx
+│   ├── 📝index.css
+│   └── ❄️main.jsx
+├── 📋vercel.json
+└── 📜vite.config.js
 
-### Installation
+````
 
-1. Clone the repository
-2. Install dependencies:
-   ```
+## ⚙️ Getting Started
+
+### ✅ Prerequisites
+
+Before you begin, make sure you have:
+
+- [Node.js](https://nodejs.org/) and npm installed
+- A Firebase project (with Auth & Firestore enabled)
+- A Cloudinary account
+
+
+### 🧩 Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/akmalkhan0/Skill_locator.git
+   cd locator
+
+2. **Install all dependencies**
+
+   ```bash
    npm install
-   ```
-3. Create a `.env` file with your Firebase and Cloudinary credentials
-4. Start the development server:
-   ```
+
+3. **Set up environment variables**
+   Create a `.env` file in the root directory and add your Firebase + Cloudinary keys:
+
+   ```env
+   VITE_FIREBASE_API_KEY=your_firebase_api_key
+   VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+   VITE_FIREBASE_PROJECT_ID=your_project_id
+   VITE_FIREBASE_STORAGE_BUCKET=your_bucket
+   VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+   VITE_FIREBASE_APP_ID=your_app_id
+
+   VITE_CLOUDINARY_CLOUD_NAME=your_cloud_name
+   VITE_CLOUDINARY_UPLOAD_URL=your_upload_URL
+
+4. **Start the development server**
+
+   ```bash
    npm run dev
-   ```
 
-## Firebase Configuration
+## 🔐 Firebase Rules Summary
 
-The application uses Firebase for authentication and Firestore for data storage. The security rules are configured to allow:
-- Read access to the `users` collection for all users
-- Write access to user documents only if the authenticated user's UID matches the document ID
-- Deny read/write access to all other collections by default
+The Firestore rules are designed to be secure and role-based:
 
-## License
+```js
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth.uid == userId;
+    }
 
-This project is licensed under the MIT License.
+    // Deny all access to other collections by default
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+```
+
+## 📸 Screenshots
+
+
+## 🛣️ Roadmap & Future Features
+
+* Advanced search filters (distance, availability, rating, Location, RealTime Location)
+* Map-based provider view (Google Maps integration, Skill Locator Nearby)
+* In-app chat system (Firebase Realtime Database or Firestore)
+* Provider reviews & ratings
+* PWA support for installable web app
+* Admin dashboard for managing users and categories
+* Skill management and also find skil you want in the Nearby Locations
+
+## 🙌 Credits
+
+Developed with ❤️ by **Akmal Khan**
+> GitHub: [@Akmalkhan0](https://github.com/Akmalkhan0)
+> LinkedIn: [Akmal Khan](https://linkedin.com/in/your-profile)
