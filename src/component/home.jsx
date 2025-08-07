@@ -18,13 +18,13 @@ const Home = () => {
         setLoading(true);
         setError(null);
         const querySnapshot = await getDocs(collection(db, 'users'));
+          console.log(querySnapshot);
         const providersData = querySnapshot.docs
           .map(doc => ({
             id: doc.id,
             ...doc.data()
           }))
           .filter(user => user.profile.role === 'provider');
-          console.log(providersData);
         setProviders(providersData);
         setFilteredProviders(providersData);
       } catch (err) {
