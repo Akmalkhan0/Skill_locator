@@ -6,13 +6,13 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 
-  console.log(await getDocs(collection(db, 'users')).docs);
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [providers, setProviders] = useState([]);
   const [filteredProviders, setFilteredProviders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  console.log(await getDocs(collection(db, 'users')).docs);
   useEffect(() => {
     const fetchProviders = async () => {
       try {
