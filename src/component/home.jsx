@@ -31,6 +31,9 @@ const Home = () => {
             id: doc.id,
             ...doc.data()
           })).filter(user => user?.profile?.role === 'provider');
+<<<<<<< HEAD
+>>>>>>> 47427792378e87047cfdf208b791dd411e957e13
+=======
 >>>>>>> 47427792378e87047cfdf208b791dd411e957e13
         setProviders(providersData);
         setFilteredProviders(providersData);
