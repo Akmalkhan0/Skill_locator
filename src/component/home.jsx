@@ -18,7 +18,6 @@ const Home = () => {
         setLoading(true);
         setError(null);
         const querySnapshot = await getDocs(collection(db, 'users'));
-          console.log(querySnapshot.docs[0].id,...docs[0].data);
         const providersData = querySnapshot.docs
           .map(doc => ({
             id: doc.id,
