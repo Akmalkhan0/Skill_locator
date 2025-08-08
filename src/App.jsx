@@ -16,6 +16,7 @@ import ProfileViewer from "./component/ProfileViewer";
 import OfflinePage from "./component/OfflinePage";
 import NotFound from "./component/NotFound";
 import Home from "./component/home";
+import ComingSoon from "./component/Coming";
 
 
 const App = () => {
@@ -97,27 +98,27 @@ const App = () => {
         />
         <Route
           path="/Skills"
-          element={<div>Comming soon...</div>}
+          element={<ComingSoon />}
         />
         <Route
           path="/jobs"
-          element={<div>Comming soon...</div>}
+          element={<ComingSoon />}
         />
         <Route
           path="/contact"
-          element={<div>Comming soon...</div>}
+          element={<ComingSoon />}
         />
           <Route
           path="/faq"
-          element={<div>Comming soon...</div>}
+          element={<ComingSoon />}
         />
         <Route
           path="/privacy"
-          element={<div>Comming soon...</div>}
+          element={<ComingSoon />}
         />
         <Route
           path="/terms"
-          element={<div>Comming soon...</div>}
+          element={<ComingSoon />}
         />
         <Route
           path="/home"
