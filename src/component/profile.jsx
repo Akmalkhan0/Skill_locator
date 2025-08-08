@@ -81,10 +81,10 @@ export const Profile = () => {
     try {
       const formData = new FormData();
       formData.append('file', selectedFile);
-      formData.append('upload_preset', 'ml_default');
+      formData.append('upload_preset', import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET);
 
       const response = await fetch(
-        'https://api.cloudinary.com/v1_1/akmal786/upload',
+        import.meta.env.VITE_CLOUDINARY_URL,
         {
           method: 'POST',
           body: formData

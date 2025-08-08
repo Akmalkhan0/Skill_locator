@@ -150,11 +150,10 @@ const Register = () => {
   const uploadToCloudinary = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", "ml_default");
+    formData.append("upload_preset", import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET);
     try {
       const response = await fetch(
-        "https://api.cloudinary.com/v1_1/akmal786/upload",
-
+        import.meta.env.VITE_CLOUDINARY_URL,
         {
           method: "POST",
           body: formData
