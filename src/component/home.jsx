@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
+import SEO from './SEO';
+import { pageMeta } from '../config/seo.config';
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -47,7 +49,13 @@ const Home = () => {
   }, [searchTerm, providers]);
 
   return (
-    <div className="home-container">
+    <>
+      <SEO 
+        title={pageMeta.home.title}
+        description={pageMeta.home.description}
+        keywords={pageMeta.home.keywords}
+      />
+      <div className="home-container">
       <div className="search-container">
         <div className="search-box">
           <FontAwesomeIcon icon={faSearch} className="search-icon" />
@@ -143,6 +151,7 @@ const Home = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

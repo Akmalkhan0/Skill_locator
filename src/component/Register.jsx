@@ -8,6 +8,8 @@ import statesDistricts from "../data/indianStatesDistricts.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faEnvelope, faLock, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
+import SEO from './SEO';
+import { pageMeta } from '../config/seo.config';
 
 
 const Register = () => {
@@ -335,12 +337,18 @@ const Register = () => {
   };
 
   return (
-    <div className="register-form" >
-      <div className="app-header" >
-        <h1>Skill Locator</h1>
-        <p>Find and showcase your skills</p>
-      </div>
-      <h2>Register</h2>
+    <>
+      <SEO 
+        title={pageMeta.register.title}
+        description={pageMeta.register.description}
+        keywords={pageMeta.register.keywords}
+      />
+      <div className="register-form" >
+        <div className="app-header" >
+          <h1>Skill Locator</h1>
+          <p>Find and showcase your skills</p>
+        </div>
+        <h2>Register</h2>
       <p Style="color:#ff5500;">
         * please fill all the required Field to Register *
       </p>
@@ -800,6 +808,7 @@ const Register = () => {
         Already have an account? <Link to="/login">Login</Link>
       </p>
     </div>
+    </>
   );
 };
 

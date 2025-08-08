@@ -1,31 +1,138 @@
+# ==========================================
+# Skill Locator - SEO Optimized Robots.txt
+# ==========================================
+
+# All Bots
 User-agent: *
 Allow: /
 
-# ✅ Public Pages
+# ✅ Public Pages - Allow Full Access
+Allow: /
 Allow: /about
 Allow: /contact
 Allow: /login
 Allow: /register
+Allow: /tutorial
 Allow: /skills
 Allow: /services
 Allow: /search
+Allow: /explore
+Allow: /terms
+Allow: /privacy
+Allow: /help
+Allow: /faq
+Allow: /blog
 Allow: /profile/
 Allow: /user/
 Allow: /provider/
 Allow: /seeker/
 Allow: /category/
-Allow: /explore/
-Allow: /terms
-Allow: /privacy
+Allow: /city/
+Allow: /state/
 
-# ❌ Private or Sensitive Paths (Block Crawling)
+# ❌ Private/Sensitive Paths - Block All Bots
 Disallow: /admin/
+Disallow: /admin*
 Disallow: /dashboard/
-Disallow: /firebase-config.js
+Disallow: /dashboard*
+Disallow: /settings/
+Disallow: /settings*
 Disallow: /private/
-Disallow: /settings
-Disallow: /chat
-Disallow: /api/
+Disallow: /private*
+Disallow: /secure/
+Disallow: /secure*
+Disallow: /internal/
+Disallow: /internal*
+Disallow: /dev/
+Disallow: /dev*
+Disallow: /test/
+Disallow: /test*
 
-# 📍 Sitemap for Google
+# 🔒 User-specific Paths
+Disallow: /profile/edit/
+Disallow: /profile/settings/
+Disallow: /user/*/edit
+Disallow: /user/*/settings
+Disallow: /provider/*/edit
+Disallow: /provider/*/settings
+
+# 💬 Communication Paths
+Disallow: /chat/
+Disallow: /chat*
+Disallow: /messages/
+Disallow: /messages*
+Disallow: /notifications/
+Disallow: /notifications*
+
+# 🔄 API & Backend
+Disallow: /api/
+Disallow: /api*
+Disallow: /ajax/
+Disallow: /ajax*
+Disallow: /webhook/
+Disallow: /webhook*
+
+# 📁 Configuration & Assets
+Disallow: /firebase-config.js
+Disallow: /config/
+Disallow: /config*
+Disallow: /assets/private/
+Disallow: /temp/
+Disallow: /temp*
+Disallow: /uploads/private/
+
+# 🎯 Search Parameters - Block URL Parameters
+Disallow: /*?*sessionid=
+Disallow: /*?*token=
+Disallow: /*?*auth=
+Disallow: /*?*password=
+Disallow: /*?*private=
+Disallow: /*?*debug=
+
+# ==========================================
+# Specific Bot Rules
+# ==========================================
+
+# Googlebot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Slurp (Yahoo)
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+# ==========================================
+# Sitemap & Host Information
+# ==========================================
+
+# Main Sitemap
 Sitemap: https://akmskilllocator.vercel.app/sitemap.xml
+
+# Host Information
+Host: https://akmskilllocator.vercel.app
+
+# ==========================================
+# End of Robots.txt
+# ==========================================

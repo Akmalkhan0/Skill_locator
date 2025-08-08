@@ -5,6 +5,8 @@ import { db } from "../firebase";
 import "../css/profile.css";
 import "../css/profile-viewer.css";
 import Modal from 'react-modal';
+import SEO from './SEO';
+import { pageMeta } from '../config/seo.config';
 
 Modal.setAppElement('#root');
 
@@ -145,7 +147,13 @@ const ProfileViewer = () => {
   }
 
   return (
-    <div className="profile-container1">
+    <>
+      <SEO 
+        title={pageMeta.profileViewer.title}
+        description={pageMeta.profileViewer.description}
+        keywords={pageMeta.profileViewer.keywords}
+      />
+      <div className="profile-container1">
       <header className="profile-header1">
         <div className="profile-info1">
           {userData.profilePicture && (
@@ -259,6 +267,7 @@ const ProfileViewer = () => {
         )}
       </div>
     </div>
+  </>
   );
 };
 

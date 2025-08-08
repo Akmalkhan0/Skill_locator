@@ -6,6 +6,8 @@ import { auth } from "../firebase";
 import '../css/login.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import SEO from './SEO';
+import { pageMeta } from '../config/seo.config';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -37,7 +39,13 @@ const Login = () => {
   };
 
   return (
-    <div className="login-form">
+    <>
+      <SEO 
+        title={pageMeta.login.title}
+        description={pageMeta.login.description}
+        keywords={pageMeta.login.keywords}
+      />
+      <div className="login-form">
       <div className="app-header">
         <h1>Skill Locator</h1>
         <p>Find and showcase your skills</p>
@@ -80,6 +88,7 @@ const Login = () => {
         {error && <p style={{ color: "red" }}>{error}</p>}
       </form>
     </div>
+    </>
   );
 };
 

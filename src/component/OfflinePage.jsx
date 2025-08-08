@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWifi, faSpinner, faGamepad, faRedo, faTimes, faCheck, faPlay } from '@fortawesome/free-solid-svg-icons';
 import "../css/offline.css";
+import SEO from './SEO';
+import { pageMeta } from '../config/seo.config';
 
 const OfflinePage = () => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -129,7 +131,13 @@ const OfflinePage = () => {
   };
 
   return (
-    <div className="offline-container">
+    <>
+      <SEO 
+        title={pageMeta.offline.title}
+        description={pageMeta.offline.description}
+        keywords={pageMeta.offline.keywords}
+      />
+      <div className="offline-container">
       <div className="offline-content">
         <div className="offline-header">
           <FontAwesomeIcon icon={faWifi} className="offline-icon wifi-icon" />
@@ -297,6 +305,7 @@ const OfflinePage = () => {
         </div>
       </div>
     </div>
+  </>
   );
 };
 

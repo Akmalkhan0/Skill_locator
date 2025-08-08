@@ -5,6 +5,8 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import "../css/profile.css";
 import Modal from 'react-modal';
+import SEO from './SEO';
+import { pageMeta } from '../config/seo.config';
 
 Modal.setAppElement('#root');
 
@@ -270,7 +272,13 @@ export const Profile = () => {
   }
 
   return (
-    <div className="profile-container">
+    <>
+      <SEO 
+        title={pageMeta.profile.title}
+        description={pageMeta.profile.description}
+        keywords={pageMeta.profile.keywords}
+      />
+      <div className="profile-container">
       <header className="profile-header">
         <div className="profile-info">
           {userData.profilePicture && (
@@ -412,6 +420,7 @@ export const Profile = () => {
         )}
       </div>
     </div>
+  </>
   );
 };
 

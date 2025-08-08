@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
 import '../css/coming.css';
+import SEO from './SEO';
+import { pageMeta } from '../config/seo.config';
 
 const ComingSoon = () => {
   const [copiedLink, setCopiedLink] = useState(false);
@@ -27,7 +29,13 @@ const ComingSoon = () => {
 
 
   return (
-    <div className="coming-component">
+    <>
+      <SEO 
+        title={pageMeta.comingSoon.title}
+        description={pageMeta.comingSoon.description}
+        keywords={pageMeta.comingSoon.keywords}
+      />
+      <div className="coming-component">
       <div className="coming-content">
         <div className="coming-header">
           <h1 className="coming-title">Coming Soon</h1>
@@ -39,6 +47,7 @@ const ComingSoon = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

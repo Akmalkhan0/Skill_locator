@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import '../css/tutorial.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import SEO from './SEO';
+import { pageMeta } from '../config/seo.config';
 
 const Tutorial = () => {
   const [expandedSections, setExpandedSections] = useState({
@@ -21,7 +23,13 @@ const Tutorial = () => {
   };
 
   return (
-    <div className="tutorial-container">
+    <>
+      <SEO 
+        title={pageMeta.tutorial.title}
+        description={pageMeta.tutorial.description}
+        keywords={pageMeta.tutorial.keywords}
+      />
+      <div className="tutorial-container">
       <h1>Skill Locator Tutorial</h1>
       
       <div className="tutorial-section">
@@ -150,6 +158,7 @@ const Tutorial = () => {
         <p>Need more help? Visit our <Link to="/help">Help Center</Link> or <Link to="/contact">Contact Us</Link>.</p>
       </div>
     </div>
+    </>
   );
 };
 
