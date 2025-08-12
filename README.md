@@ -81,9 +81,9 @@ Ckeck The Latest Live Version of it and also Register If you want: 🔗[Skill Lo
 
 ````
 
-## ⚙️ Getting Started
+## Getting Started
 
-### ✅ Prerequisites
+### Prerequisites
 
 Before you begin, make sure you have:
 
@@ -92,7 +92,7 @@ Before you begin, make sure you have:
 - A Cloudinary account
 
 
-### 🧩 Installation
+### Installation
 
 1. **Clone the repository**
    ```bash
@@ -123,7 +123,7 @@ Before you begin, make sure you have:
    ```bash
    npm run dev
 
-## 🔐 Firebase Rules Summary
+## Firebase Rules Summary
 
 The Firestore rules are designed to be secure and role-based:
 
@@ -144,10 +144,10 @@ service cloud.firestore {
 }
 ```
 
-## 📸 Screenshots
+## Screenshots
 
 
-## 🛣️ Roadmap & Future Features
+## Roadmap & Future Features
 
 * Advanced search filters (distance, availability, rating, Location, RealTime Location)
 * Map-based provider view (Google Maps integration, Skill Locator Nearby)
@@ -157,7 +157,7 @@ service cloud.firestore {
 * Admin dashboard for managing users and categories
 * Skill management and also find skil you want in the Nearby Locations
 
-## 🙌 Credits
+## Credits
 
 Developed with ❤️ by **Akmal Khan**
 > GitHub: [@Akmalkhan0](https://github.com/Akmalkhan0)
