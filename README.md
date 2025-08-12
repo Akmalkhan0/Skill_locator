@@ -134,7 +134,7 @@ service cloud.firestore {
     match /users/{userId} {
       allow read: if request.auth != null;
       allow write: if request.auth.uid == userId;
-    }
+    })
 
     // Deny all access to other collections by default
     match /{document=**} {
@@ -145,6 +145,12 @@ service cloud.firestore {
 ```
 
 ## Screenshots
+
+<img src="https://github.com/user-attachments/assets/033519ae-9093-44c1-b183-aa4923cff203" width= 250>
+<img src="https://github.com/user-attachments/assets/eb59e095-df95-4e98-990b-b6401a2fb249" width= 250>
+<img src="https://github.com/user-attachments/assets/b3cbf1a0-a1bf-4f74-b544-e1289296293c" width= 250>
+<img src="https://github.com/user-attachments/assets/1346e538-f261-4796-9d09-1c4eedd4cd24" width= 250>
+<img src="https://github.com/user-attachments/assets/e9d09e9d-9a8a-4793-84ab-99d11c7c7f90" width= 250>
 
 
 ## Roadmap & Future Features
